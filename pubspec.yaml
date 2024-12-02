@@ -1,5 +1,5 @@
 name: nucleo
-description: 'A Flutter package for handling real-time communication and notifications using WebSockets and Firebase Cloud Messaging, with secure storage capabilities and background task support'
+description: 'A Flutter package for real-time communication and event handling through Firebase Cloud Messaging, WebSockets, and HTTP Polling, with background task support'
 version: 0.0.1
 homepage:
 
