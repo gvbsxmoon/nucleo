@@ -1,10 +1,13 @@
 import 'dart:async';
-import 'package:event_manager/core/core.dart';
-import 'package:event_manager/providers/firebase/firebase_background_handler.dart';
-import 'package:event_manager/providers/firebase/firebase_provider_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:nucleo/core/interfaces/event_provider.dart';
+import 'package:nucleo/core/models/event_key.dart';
+import 'package:nucleo/core/models/event_metadata.dart';
+import 'package:nucleo/core/models/event_model.dart';
+import 'package:nucleo/providers/firebase/firebase_background_handler.dart';
+import 'package:nucleo/providers/firebase/firebase_provider_config.dart';
 
 /// A provider that handles Firebase Cloud Messaging events.
 ///

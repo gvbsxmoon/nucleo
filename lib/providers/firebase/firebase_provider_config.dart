@@ -1,5 +1,5 @@
-import 'package:event_manager/core/interfaces/event_provider_config.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:nucleo/core/interfaces/event_provider_config.dart';
 
 class FirebaseProviderConfig extends EventProviderConfig {
   FirebaseOptions options;

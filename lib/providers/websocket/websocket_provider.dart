@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:event_manager/core/interfaces/event_provider.dart';
+import 'package:nucleo/core/core.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class WebSocketProvider implements EventProvider {
   final String url;
   final WebSocketChannel? _channel;
-  final _eventController = StreamController<dynamic>.broadcast();
+  final _eventController = StreamController<EventModel>.broadcast();
 
   WebSocketProvider(
     this.url, {
@@ -15,7 +15,7 @@ class WebSocketProvider implements EventProvider {
   }) : _channel = channel;
 
   @override
-  Stream<dynamic> get eventStream => _eventController.stream;
+  Stream<EventModel> get eventStream => _eventController.stream;
 
   @override
   Future<void> initialize() async {
@@ -30,11 +30,5 @@ class WebSocketProvider implements EventProvider {
   @override
   Future<void> dispose() async {
     await _eventController.close();
-  }
-
-  @override
-  Future<void> configure(Map<String, dynamic> congig) {
-    // TODO: implement congifure
-    throw UnimplementedError();
   }
 }

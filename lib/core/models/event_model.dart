@@ -1,5 +1,5 @@
-import 'package:event_manager/core/models/event_key.dart';
-import 'package:event_manager/core/models/event_metadata.dart';
+import 'package:nucleo/core/models/event_key.dart';
+import 'package:nucleo/core/models/event_metadata.dart';
 
 class EventModel<T> {
   final EventKey key;

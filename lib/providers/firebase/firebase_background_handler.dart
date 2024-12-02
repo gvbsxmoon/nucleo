@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:event_manager/providers/firebase/index.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:nucleo/providers/firebase/firebase_provider.dart';
 
 /// A background message handler for processing notification events.
 ///
