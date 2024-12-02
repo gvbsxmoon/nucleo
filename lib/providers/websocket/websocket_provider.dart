@@ -31,4 +31,10 @@ class WebSocketProvider implements EventProvider {
   Future<void> dispose() async {
     await _eventController.close();
   }
+
+  @override
+  Future<void> handleMessage(message) {
+    // TODO: implement handleMessage
+    throw UnimplementedError();
+  }
 }

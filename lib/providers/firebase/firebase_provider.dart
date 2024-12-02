@@ -116,14 +116,14 @@ class FirebaseMessagingProvider implements EventProvider<RemoteMessage> {
       // The app will just not receive notifications if denied
     }
 
-    FirebaseMessaging.onMessage.listen(_handleMessage);
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+    FirebaseMessaging.onMessage.listen(handleMessage);
+    FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
     FirebaseMessaging.onBackgroundMessage(firebaseBackgroundHandler);
 
     final initialMessage = await _messaging.getInitialMessage();
 
     if (initialMessage != null) {
-      await _handleMessage(initialMessage);
+      await handleMessage(initialMessage);
     }
   }
 
@@ -143,7 +143,8 @@ class FirebaseMessagingProvider implements EventProvider<RemoteMessage> {
   ///
   /// Converts the [RemoteMessage] to an [EventModel] and broadcasts it
   /// through the event stream.
-  Future<void> _handleMessage(RemoteMessage message) async {
+  @override
+  Future<void> handleMessage(RemoteMessage message) async {
     //TODO: add a specific key for the message
     _eventController.sink.add(
       EventModel(

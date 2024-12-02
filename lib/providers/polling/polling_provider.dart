@@ -2,7 +2,58 @@
 // import 'package:background_fetch/background_fetch.dart';
 // import 'package:http/http.dart' as http;
 // import 'package:event_manager/core/interfaces/event_provider.dart';
-// 
+
+import 'dart:async';
+
+import 'package:http/http.dart';
+import 'package:nucleo/core/core.dart';
+import 'package:nucleo/providers/polling/polling_provider_config.dart';
+
+class PollingProvider extends EventProvider {
+  final Client _client;
+  final PollingProviderConfig? _config;
+
+  PollingProvider._({
+    required Client client,
+    PollingProviderConfig? config,
+  })  : _client = client,
+        _config = config;
+
+  factory PollingProvider.fromInstance(Client client) =>
+      PollingProvider._(client: client);
+
+  factory PollingProvider.withConfig(PollingProviderConfig config) {
+    return PollingProvider._(
+      client: Client(),
+      config: config,
+    );
+  }
+
+  @override
+  Future<void> dispose() {
+    // TODO: implement dispose
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement eventStream
+  Stream<EventModel> get eventStream => throw UnimplementedError();
+
+  @override
+  Future<void> handleMessage(message) {
+    // TODO: implement handleMessage
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> initialize() {
+    // TODO: implement initialize
+    throw UnimplementedError();
+  }
+}
+
+
+
 // class PollingProvider implements EventProvider {
 //   Timer? _pollingTimer;
 //   final _client = http.Client();

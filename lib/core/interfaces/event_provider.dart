@@ -1,4 +1,4 @@
-import 'package:event_manager/core/core.dart';
+import 'package:nucleo/core/models/event_model.dart';
 
 abstract class EventProvider<T> {
   Stream<EventModel<T>> get eventStream;
@@ -6,4 +6,6 @@ abstract class EventProvider<T> {
   Future<void> initialize();
 
   Future<void> dispose();
+
+  Future<void> handleMessage(T message);
 }
