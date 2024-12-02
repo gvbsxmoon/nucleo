@@ -1,0 +1,40 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:event_manager/core/interfaces/event_provider.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+class WebSocketProvider implements EventProvider {
+  final String url;
+  final WebSocketChannel? _channel;
+  final _eventController = StreamController<dynamic>.broadcast();
+
+  WebSocketProvider(
+    this.url, {
+    WebSocketChannel? channel,
+  }) : _channel = channel;
+
+  @override
+  Stream<dynamic> get eventStream => _eventController.stream;
+
+  @override
+  Future<void> initialize() async {
+    final channel = _channel ?? WebSocketChannel.connect(Uri.parse(url));
+
+    channel.stream.listen((message) {
+      final event = json.decode(message as String);
+      _eventController.add(event);
+    });
+  }
+
+  @override
+  Future<void> dispose() async {
+    await _eventController.close();
+  }
+
+  @override
+  Future<void> configure(Map<String, dynamic> congig) {
+    // TODO: implement congifure
+    throw UnimplementedError();
+  }
+}
