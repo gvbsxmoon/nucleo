@@ -145,7 +145,8 @@ class FirebaseMessagingProvider implements EventProvider<RemoteMessage> {
   /// through the event stream.
   @override
   Future<void> handleMessage(RemoteMessage message) async {
-    //TODO: add a specific key for the message
+    // TODO: add a specific key for the message
+    // TODO: give user the possibility to andle the metadata
     _eventController.sink.add(
       EventModel(
         key: EventKey(key: 'message'),
